@@ -30,6 +30,9 @@ const App = () => {
       console.log("word not found")
     }
   };
+  const handleHomeClick = () => {
+    window.location.href = 'http://localhost:3000';
+  };
 
   const openFile = async (filePath) => {
     try {
@@ -46,24 +49,47 @@ const App = () => {
   };
 
   return (
-    <div>
-      <h1>Your App Component</h1>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={word} onChange={handleWordChange} />
-        <select value={selectedValue} onChange={handleDropdownChange}>
-          <option value="table1">table1</option>
-          <option value="table2">table2</option>
-          <option value="table3">table3</option>
-        </select>
-        <button type="submit">Search</button>
-      </form>
-      <div>
-        {responses.map((doc, index) => (
-          <div key={index}>
-            <p onClick={() => openFile(doc.filename)}>Filename: {doc.filename}</p>
-            <p>Count: {doc.count}</p>
+    <div className="container-fluid py-5 text-black  justify-content-center align-items-center">
+      <h1>Search the Word</h1>
+      <div className="container-fluid py-5 text-white">
+        <form onSubmit={handleSubmit} className="d-flex">
+          <input type="text" value={word} onChange={handleWordChange} className="form-control me-2" placeholder="Enter word" />
+          <select value={selectedValue} onChange={handleDropdownChange} className="form-select me-2">
+            <option value="">Select Table</option>
+            <option value="table1">Table 1</option>
+            <option value="table2">Table 2</option>
+            <option value="table3">Table 3</option>
+          </select>
+          <button className="btn btn-lg btn-dark" type="submit">Search</button>
+          <button className="btn btn-lg btn-danger ms-2" onClick={handleHomeClick}>Home</button>
+        </form>
+      </div>
+      <div className="row mt-4  container-fluid py-5 text-white d-flex justify-content-center align-items-center">
+        <div className="col">
+          <div className="card">
+            <div className="card-body">
+              <h5 className="card-title">Search Results</h5>
+              <div className="table-responsive">
+                <table className="table">
+                  <thead>
+                    <tr>
+                      <th>Filename</th>
+                      <th>Count</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {responses.map((doc, index) => (
+                      <tr key={index}>
+                        <td onClick={() => openFile(doc.filename)}>{doc.filename}</td>
+                        <td>{doc.count}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );

@@ -49,7 +49,7 @@ const App = () => {
   };
 
   return (
-    <div className="container-fluid py-5 text-black  justify-content-center align-items-center">
+    <div className="container-fluid py-5 text-black  justify-content-center align-items-center text-white">
       <h1>Search the Word</h1>
       <div className="container-fluid py-5 text-white">
         <form onSubmit={handleSubmit} className="d-flex">

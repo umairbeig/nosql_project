@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+/* App.css */
+
+body {
+  background-color: #ffffff; /* Set the background color of the page */
+}
+
+.container-fluid {
+  background-color: #050505; /* Set the background color of the container */
+  border-radius: 10px; /* Add rounded corners to the container */
+  padding: 20px; /* Add some padding to the container */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a box shadow to the container */
+}
+
